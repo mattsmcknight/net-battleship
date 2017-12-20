@@ -80,6 +80,8 @@ if __name__ == '__main__':
         time.sleep(2)
         send_order(sock, 2, 'd', my_result)
         print('second order sent')
+        my_result = player_board.hit(*your_turn)
+        opponent_board.opponenthit(2, 'd', result)
 
     close_connection(sock)
     print(player_board)

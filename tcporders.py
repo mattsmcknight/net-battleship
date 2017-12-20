@@ -41,8 +41,8 @@ def recieve_order(sock):
         a = sock.recv(1).decode("utf8")
         b = b + str(a)
     b = b.split(',')
+    print(b)
     b[2] = b[2] == 'True\r'
-
     return (int(b[0]), b[1]), b[2]
 
 def close_connection(sock):
