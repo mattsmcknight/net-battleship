@@ -23,11 +23,12 @@ def send_first_turn(sock, myturn):
     sock.send(bytes('{}\r'.format(myturn), 'utf8'))
 
 def receive_first_turn(sock):
-    a = ' '
     b = ''
-    while a != '\r':
+    while True:
         a = sock.recv(1).decode("utf8")
-        b = b + a
+        if a = '\r':
+            break
+        b = b + str(a)
     return b == 'True'
 
 def send_order(sock, row, column, success = 'First_Turn'):
@@ -35,7 +36,6 @@ def send_order(sock, row, column, success = 'First_Turn'):
     sock.send(bytes(message, 'utf8'))
 
 def recieve_order(sock):
-    a = ' '
     b = ''
     while True:
         a = sock.recv(1).decode("utf8")
