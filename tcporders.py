@@ -26,9 +26,9 @@ def receive_first_turn(sock):
     a = ' '
     b = ''
     while a != '\r':
-        a = sock.recv(1)
-        b = b + str(a)
-        print(str(a))
+        a = sock.recv(1).decode("utf8")
+        b = b + a
+        print(a)
     return str(b) == 'True'
 
 def send_order(sock, row, column, success = 'First_Turn'):
@@ -39,7 +39,7 @@ def recieve_order(sock):
     a = ' '
     b = ''
     while a != '\r':
-        a = sock.recv(1)
+        a = sock.recv(1).decode("utf8")
         b = b + str(a)
         b = str(b).split(',')
         b[2] = b[2] == 'true'
