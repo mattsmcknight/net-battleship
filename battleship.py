@@ -77,9 +77,9 @@ if __name__ == '__main__':
         opponent_board.opponenthit(2, 'd', result)
 
     close_connection(sock)
-    print(player_board)
-    print(opponent_board)
 
+    print(opponent_board)
+    print(player_board)
 
 
 
