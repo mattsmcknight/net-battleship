@@ -32,9 +32,6 @@ if __name__ == '__main__':
     client = sys.argv[2]
     carrier = Piece('c', 5)
     carrier.place_vertical(player_board, 1, 'c')
-    print(player_board)
-    print(opponent_board)
-    print((str(True)))
 
     if server == 'host':
         sock2 = open_host()
@@ -56,7 +53,7 @@ if __name__ == '__main__':
         print('second order sent')
         your_turn, result = recieve_order(sock)
         print('second received order')
-        opponent_board.opponenthit(3, 'c', result)
+        opponent_board.opponenthit(3, 'd', result)
         my_result = player_board.hit(*your_turn)
 
     if server == 'client':
@@ -64,17 +61,16 @@ if __name__ == '__main__':
         print ('socket opened')
         whose_turn = receive_first_turn(sock)
         print('first turn received')
-        if whose_turn:
-            print(str(whose_turn))
         your_turn, result = recieve_order(sock)
         print('first received order')
+        print(result)
         my_result = player_board.hit(*your_turn)
-        print(my_result)
         time.sleep(2)
         send_order(sock, 2, 'c', my_result)
         print('first order sent')
         your_turn, result = recieve_order(sock)
         print('second received order')
+        print(result)
         my_result = player_board.hit(*your_turn)
         opponent_board.opponenthit(2, 'c', result)
         time.sleep(2)
