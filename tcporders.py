@@ -28,6 +28,7 @@ def receive_first_turn(sock):
     while a != '\r':
         a = sock.recv(1)
         b = b + str(a)
+        print(str(a))
     return str(b) == 'True'
 
 def send_order(sock, row, column, success = 'First_Turn'):
