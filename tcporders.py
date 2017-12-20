@@ -20,7 +20,7 @@ def open_client(host = 'localhost'):
     return sock
 
 def send_first_turn(sock, myturn):
-    sock.send(bytes(myturn, 'utf8'))
+    sock.send(bytes('{}\r'.format(myturn), 'utf8'))
 
 def receive_first_turn(sock):
     a = ' '
