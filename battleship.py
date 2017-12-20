@@ -40,7 +40,7 @@ if __name__ == '__main__':
         print('socket opened')
         sock = accept_client(sock2)
         print('socket accepted')
-        time.sleep(2)
+        time.sleep(10)
         send_first_turn(sock, 'True')
         print('first turn sent')
         send_order(sock, 3, 'c')
