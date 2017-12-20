@@ -29,7 +29,7 @@ def receive_first_turn(sock):
         a = sock.recv(1).decode("utf8")
         b = b + a
         print(a)
-    return str(b) == 'True'
+    return b == 'True'
 
 def send_order(sock, row, column, success = 'First_Turn'):
     message = '{},{},{}\r'.format(row, column, success)
@@ -42,7 +42,8 @@ def recieve_order(sock):
         a = sock.recv(1).decode("utf8")
         b = b + str(a)
         b = str(b).split(',')
-        b[2] = b[2] == 'true'
+        b[2] = b[2] == 'True'
+        print(b)
     return tuple(b[0], b[1]), b[2]
 
 def close_connection(sock):
