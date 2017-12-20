@@ -1,7 +1,9 @@
+import collections
+
 class Board:
     def __init__(self):
         boardlist = []
-        boardtmp = {}
+        boardtmp = collections.OrderedDict()
         filled = '?'
         letters = "abcdefghij"
         for row in range(1, 11):
