@@ -37,12 +37,14 @@ def send_order(sock, row, column, success = 'First_Turn'):
 def recieve_order(sock):
     a = ' '
     b = ''
-    while a != '\r':
+    while True:
         a = sock.recv(1).decode("utf8")
+        if a = '\r':
+            break
         b = b + str(a)
     b = b.split(',')
     print(b)
-    b[2] = b[2] == 'True\r'
+    b[2] = b[2] == 'True'
     return (int(b[0]), b[1]), b[2]
 
 def close_connection(sock):
