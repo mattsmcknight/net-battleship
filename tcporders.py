@@ -31,7 +31,7 @@ def receive_first_turn(sock):
     return b == 'True'
 
 def send_order(sock, row, column, success = 'First_Turn'):
-    message = '{},{},{}\r'.format(row, column, success)
+    message = '{},{},{}\r'.format(row, column, str(success))
     sock.send(bytes(message, 'utf8'))
 
 def recieve_order(sock):

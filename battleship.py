@@ -34,6 +34,7 @@ if __name__ == '__main__':
     carrier.place_vertical(player_board, 1, 'c')
     print(player_board)
     print(opponent_board)
+    print((str(True)))
 
     if server == 'host':
         sock2 = open_host()
