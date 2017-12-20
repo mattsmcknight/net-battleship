@@ -53,6 +53,7 @@ if __name__ == '__main__':
 
     if server == 'client':
         sock = open_client(client)
+        print ('socket opened')
         whose_turn = receive_first_turn(sock)
         print('first turn received')
         if whose_turn:
