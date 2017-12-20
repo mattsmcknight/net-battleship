@@ -43,7 +43,7 @@ def recieve_order(sock):
         b = b + str(a)
         b = str(b).split(',')
         b[2] = b[2] == 'True'
-        print(b)
+    print(b)
     return tuple(b[0], b[1]), b[2]
 
 def close_connection(sock):
