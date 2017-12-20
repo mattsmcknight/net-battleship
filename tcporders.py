@@ -42,6 +42,7 @@ def recieve_order(sock):
         b = b + str(a)
     b = b.split(',')
     b[2] = b[2] == 'True'
+    print(b)
     return (int(b[0]), b[1]), b[2]
 
 def close_connection(sock):
