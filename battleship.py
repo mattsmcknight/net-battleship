@@ -1,5 +1,8 @@
+import sys
+
 from boards import Board
 from pieces import Piece
+from tcporders import *
 
 
 def initialize():
@@ -24,3 +27,55 @@ def initialize():
 
 if __name__ == '__main__':
     player_board, opponent_board = initialize()
+
+    server = sys.argv[1]
+    client = sys.argv[2]
+    carrier = Piece('c', 5)
+    carrier.place_vertical(player_board, 1, 'c')
+    print(player_board)
+    print(opponent_board)
+
+    if server == 'host':
+        sock2 = open_host()
+        print('socket opened')
+        sock = accept_client(sock2)
+        print('socket accepted')
+        send_first_turn(sock, 'True')
+        print('first turn sent')
+        send_order(sock, 3, 'c')
+        your_turn, result = recieve_order(sock)
+        opponent_board.opponenthit(3, 'c', result)
+        my_result = player_board.hit(*your_turn)
+        send_order(sock, 3, 'd', my_result)
+        your_turn, result = recieve_order(sock)
+        opponent_board.opponenthit(3, 'c', result)
+        my_result = player_board.hit(*your_turn)
+
+    if server == 'client':
+        sock = open_client(client)
+        whose_turn = receive_first_turn(sock)
+        print('first turn received')
+        if whose_turn:
+            print(str(whose_turn))
+        your_turn, result = recieve_order(sock)
+        my_result = player_board.hit(*your_turn)
+        send_order(sock, 2, 'c', my_result)
+        your_turn, result = recieve_order(sock)
+        my_result = player_board.hit(*your_turn)
+        opponent_board.opponenthit(2, 'c', result)
+        send_order(sock, 2, 'd', my_result)
+        your_turn, result = recieve_order(sock)
+        my_result = player_board.hit(*your_turn)
+        opponent_board.opponenthit(2, 'd', result)
+
+    close_connection(sock)
+    print(player_board)
+    print(opponent_board)
+
+
+
+
+
+
+
+
