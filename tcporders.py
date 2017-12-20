@@ -26,7 +26,7 @@ def receive_first_turn(sock):
     b = ''
     while True:
         a = sock.recv(1).decode("utf8")
-        if a = '\r':
+        if a == '\r':
             break
         b = b + str(a)
     return b == 'True'
@@ -39,7 +39,7 @@ def recieve_order(sock):
     b = ''
     while True:
         a = sock.recv(1).decode("utf8")
-        if a = '\r':
+        if a == '\r':
             break
         b = b + str(a)
     b = b.split(',')
