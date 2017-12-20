@@ -15,7 +15,7 @@ def accept_client(sock2):
 
 def open_client(host = 'localhost'):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_address = (host, 8675)
+    server_address = ((host, 8675))
     sock.connect(server_address)
     return sock
 
