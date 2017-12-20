@@ -69,6 +69,7 @@ if __name__ == '__main__':
         your_turn, result = recieve_order(sock)
         print('first received order')
         my_result = player_board.hit(*your_turn)
+        print(my_result)
         time.sleep(2)
         send_order(sock, 2, 'c', my_result)
         print('first order sent')
