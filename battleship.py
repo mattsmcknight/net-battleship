@@ -35,50 +35,44 @@ if __name__ == '__main__':
 
     if server == 'host':
         sock2 = open_host()
-        print('socket opened')
         sock = accept_client(sock2)
-        print('socket accepted')
         time.sleep(5)
         send_first_turn(sock, 'True')
-        print('first turn sent')
+
         time.sleep(2)
         send_order(sock, 3, 'c')
-        print('first order sent')
+
         your_turn, result = recieve_order(sock)
-        print('first received order')
         opponent_board.opponenthit(3, 'c', result)
         my_result = player_board.hit(*your_turn)
+
         time.sleep(2)
         send_order(sock, 3, 'd', my_result)
-        print('second order sent')
+
         your_turn, result = recieve_order(sock)
-        print('second received order')
         opponent_board.opponenthit(3, 'd', result)
         my_result = player_board.hit(*your_turn)
+
         time.sleep(2)
         send_order(sock, 3, 'd', my_result)
 
     if server == 'client':
         sock = open_client(client)
-        print ('socket opened')
         whose_turn = receive_first_turn(sock)
-        print('first turn received')
         your_turn, result = recieve_order(sock)
-        print('first received order')
         my_result = player_board.hit(*your_turn)
+
         time.sleep(2)
         send_order(sock, 2, 'c', my_result)
-        print('first order sent')
 
         your_turn, result = recieve_order(sock)
-        print('second received order')
-        print(result)
-
         my_result = player_board.hit(*your_turn)
         opponent_board.opponenthit(2, 'c', result)
+
         time.sleep(2)
         send_order(sock, 2, 'd', my_result)
-        print('second order sent')
+
+        your_turn, result = recieve_order(sock)
         my_result = player_board.hit(*your_turn)
         opponent_board.opponenthit(2, 'd', result)
 
