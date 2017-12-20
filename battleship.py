@@ -55,6 +55,8 @@ if __name__ == '__main__':
         print('second received order')
         opponent_board.opponenthit(3, 'd', result)
         my_result = player_board.hit(*your_turn)
+        time.sleep(2)
+        send_order(sock, 3, 'd', my_result)
 
     if server == 'client':
         sock = open_client(client)
@@ -63,14 +65,15 @@ if __name__ == '__main__':
         print('first turn received')
         your_turn, result = recieve_order(sock)
         print('first received order')
-        print(result)
         my_result = player_board.hit(*your_turn)
         time.sleep(2)
         send_order(sock, 2, 'c', my_result)
         print('first order sent')
+
         your_turn, result = recieve_order(sock)
         print('second received order')
         print(result)
+
         my_result = player_board.hit(*your_turn)
         opponent_board.opponenthit(2, 'c', result)
         time.sleep(2)
