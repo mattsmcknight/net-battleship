@@ -135,7 +135,7 @@ if __name__ == '__main__':
         opponent_board.hit(*attack, result)
         for ship in ships:
             ship.remove_life(*your_turn)
-        if sum(ships) = 0:
+        if sum(ships) == 0:
             time.sleep(2)
             send_winner(sock)
             winner = False
