@@ -3,7 +3,8 @@ from battleship import *
 
 class BattleShipTestCase(unittest.TestCase):
     def setUp(self):
-        self.player_board, self.opponent_board = initialize()
+        self.player_board, self.opponent_board = Board(), Board()
+        self.player_board.playerboard()
 
     def test_player_boards(self):
         testboard = """    a  b  c  d  e  f  g  h  i  j 
@@ -35,7 +36,7 @@ class BattleShipTestCase(unittest.TestCase):
 
 
     def test_piece(self):
-        carrier = Piece('c', 5)
+        carrier = Piece('c', 5, 'carrier')
         c_test_true = carrier.place_vertical(self.player_board, 1, 'c')
         c_test_false = carrier.place_horizontal(self.player_board, 2, 'a')
         self.assertEqual(c_test_true, True, 'Carrier not placed')
@@ -55,7 +56,7 @@ class BattleShipTestCase(unittest.TestCase):
 
 
     def testhit(self):
-        carrier = Piece('c', 5)
+        carrier = Piece('c', 5, 'carrier')
         carrier.place_vertical(self.player_board, 1, 'c')
         self.assertEqual(self.player_board.hit(3, 'c'), True, 'Hit not detected')
         self.assertEqual(self.player_board.hit(3, 'd'), False, 'Hit detected in error')

@@ -45,59 +45,65 @@ def place_pieces(player_board):
         cls()
         print(player_board)
         print('Place your {}:'.format(ship))
-        print('row: [1-10]')
-        for _ in range(2):
-            row = input()
-            try:
-                row = int(row)
-                if row > 0 and row < 11:
-                    break
-                else:
-                    raise ValueError('Number out of range')
-            except Exception as excpt:
-                print(excpt)
-                print('Try Again)')
-        print('column: [a-j]')
         for _ in range(3):
-            column = input()
-            try:
-                column = column.lower()
-                print(column)
-                print(len(column))
-                if column in 'a b c d e f g h i j' and len(column) == 1:
-                    break
-                else:
-                    raise ValueError('Column out of range')
-            except Exception as excpt:
-                print(excpt)
-                print('Try Again')
-        else:
-            close_connection(sock)
-            quit()
-        print('(H)orizontal or (V)ertical: [hv]')
-        for _ in range(2):
-            orient = input()
-            try:
-                orient = orient.lower()
-                if orient in 'h v' and len(column) == 1:
-                    break
-                else:
-                    raise ValueError('Column out of range')
-            except Exception as excpt:
-                print(excpt)
-                print('Try Again')
-        else:
-            close_connection(sock)
-            quit()
+            print('row: [1-10]')
+            for _ in range(3):
+                row = input()
+                try:
+                    row = int(row)
+                    if row > 0 and row < 11:
+                        break
+                    else:
+                        raise ValueError('Number out of range')
+                except Exception as excpt:
+                    print(excpt)
+                    print('Try Again)')
+            print('column: [a-j]')
+            for _ in range(3):
+                column = input()
+                try:
+                    column = column.lower()
+                    if column in 'a b c d e f g h i j' and len(column) == 1:
+                        break
+                    else:
+                        raise ValueError('Column out of range')
+                except Exception as excpt:
+                    print(excpt)
+                    print('Try Again')
+            else:
+                close_connection(sock)
+                quit()
+            print('(H)orizontal or (V)ertical: [hv]')
+            for _ in range(2):
+                orient = input()
+                try:
+                    orient = orient.lower()
+                    if orient in 'h v' and len(column) == 1:
+                        break
+                    else:
+                        raise ValueError('Column out of range')
+                except Exception as excpt:
+                    print(excpt)
+                    print('Try Again')
+            else:
+                close_connection(sock)
+                quit()
 
-        if orient == 'h':
-            if (ord(column) + ship.length) > 10:
-                column = chr(ord(column) - (ord(column) + ship.length - 10))
-            ship.place_horizontal(player_board, row, column)
-        if orient == 'v':
-            if (row + ship.length) > 10:
-                row = row - (row + ship.length - 10)
-            ship.place_vertical(player_board, row, column)
+            if orient == 'h':
+                if (ord(column) + ship.length) > (ord('a') + 10):
+                    column = chr(ord(column) - (ord(column) + ship.length - 10))
+                if ship.place_horizontal(player_board, row, column):
+                    break
+                else:
+                    print('Occupied, try again.')
+
+            if orient == 'v':
+                if (row + ship.length) > 10:
+                    row = row - (row + ship.length - 10)
+                if ship.place_vertical(player_board, row, column):
+                    break
+                else:
+                    print('Occupied, try again.')
     cls()
     print(player_board)
     return ships
