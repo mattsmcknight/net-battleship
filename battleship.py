@@ -67,6 +67,7 @@ if __name__ == '__main__':
             receive_order
             print('your turn')
 
+    time.sleep(10)
     # Turn Loop
 
     # Win condition tests if all pieces in piece list add to 0
