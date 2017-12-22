@@ -90,8 +90,8 @@ def place_pieces(player_board):
                 quit()
 
             if orient == 'h':
-                if (ord(column) + ship.length) > (ord('a') + 9):
-                    column = chr(ord(column) - (ord(column) + ship.length - 9))
+                if (ord(column) + ship.length) > (ord('a') + 10):
+                    column = chr(ord(column) - (ord(column) + ship.length - 10))
                 if ship.place_horizontal(player_board, row, column):
                     break
                 else:
@@ -99,7 +99,7 @@ def place_pieces(player_board):
 
             if orient == 'v':
                 if (row + ship.length) > 10:
-                    row = row - (row + ship.length - 11)
+                    row = row - (row + ship.length - 10)
                 if ship.place_vertical(player_board, row, column):
                     break
                 else:
