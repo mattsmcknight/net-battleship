@@ -126,7 +126,7 @@ if __name__ == '__main__':
         if not turn:
             print('waiting for other player...')
             sock.settimeout(100000)
-            while true:
+            while True:
                 order = receive_order(sock)
                 if order != False:
                     break
@@ -142,7 +142,7 @@ if __name__ == '__main__':
         print('too far?')
         time.sleep(2)
         send_order(sock, row, column, my_result)
-        while true:
+        while True:
             order = receive_order(sock)
             if order != False:
                 break
