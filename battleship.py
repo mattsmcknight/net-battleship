@@ -52,11 +52,12 @@ if __name__ == '__main__':
     if server == 'host':
         turn = random.randint(0,1)
         while True:
-            send_first_turn(sock, turn == 0)
+            send_first_turn(sock, str(turn == 0))
             if receive_ack(sock):
                 break
         if turn == 0:
             receive_order(sock)
+            print('your turn')
 
 
     if server == client:
@@ -64,8 +65,8 @@ if __name__ == '__main__':
         send_ack(sock)
         if not turn:
             receive_order
+            print('your turn')
 
-    time.sleep(15)
     # Turn Loop
 
     # Win condition tests if all pieces in piece list add to 0
