@@ -54,6 +54,7 @@ def receive_ack(sock):
 
 def send_order(sock, row, column, success = 'First_Turn'):
     message = '{},{},{}\r'.format(row, column, str(success))
+    print(message)
     sock.send(bytes(message, 'utf8'))
 
 def receive_order(sock):
@@ -63,6 +64,7 @@ def receive_order(sock):
         if a == '\r':
             break
         b = b + str(a)
+        print(b)
     return b
 
 def send_winner(sock):
