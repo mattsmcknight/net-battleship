@@ -70,7 +70,7 @@ if __name__ == '__main__':
             send_first_turn(sock, str(turn == 0))
             if receive_ack(sock):
                 break
-        sock.settimeout(0)
+        sock.settimeout(100000)
         if turn == 0:
             time.sleep(1)
             receive_order(sock)
