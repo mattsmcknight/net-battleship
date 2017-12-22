@@ -33,7 +33,7 @@ def split_order(b):
     return (b[0], b[1]), b[2]
 
 
-def place_pieces():
+def place_pieces(player_board):
     carrier = Piece('c', 5, 'carrier')
     battleship1, battleship2 = Piece('b', 4, 'battleship'), Piece('b', 4, 'battleship')
     cruiser1, cruiser2, cruiser3 = Piece('u', 4, 'cruiser'), Piece('u', 4, 'cruiser'), Piece('u', 4, 'cruiser')
@@ -114,7 +114,7 @@ if __name__ == '__main__':
 
     # player_board, opponent_board, sock2, sock = initialize(server, client)
 
-    ships = place_pieces()
+    ships = place_pieces(player_board)
 
     # Check host or client
     # If host, Roll for first Turn If client, wait for winner
