@@ -56,12 +56,14 @@ if __name__ == '__main__':
     if server == 'host':
         turn = random.randint(0,1)
         send_first_turn(sock, str(turn == 0))
+        print(turn)
         if turn == 0:
             receive_order(sock)
 
     if server == client:
         turn == receive_first_turn(sock)
         time.sleep(2)
+        print(turn)
         if not turn:
             receive_order
 
