@@ -92,9 +92,7 @@ def place_pieces(player_board):
             if orient == 'h':
                 print('{} {} {}'.format(ord(column), ship.length, ord(column) + ship.length))
                 if (ord(column) + ship.length) > 106:
-                    print(chr(ord(column) - (ord(column) + ship.length - 10) + 97))
                     column = chr(ord(column) - (ord(column) + ship.length - 10) + 97)
-                    print(column)
                 if ship.place_horizontal(player_board, row, column):
                     break
                 else:
@@ -107,6 +105,9 @@ def place_pieces(player_board):
                     break
                 else:
                     print('Occupied, try again.')
+        else:
+            close_connection(sock)
+            quit()
     cls()
     print(player_board)
     return ships
