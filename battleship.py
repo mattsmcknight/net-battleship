@@ -66,7 +66,7 @@ if __name__ == '__main__':
 
     if server == 'host':
         turn = random.randint(0,1)
-        time.sleep(2)
+        time.sleep(5)
         send_first_turn(sock, str(turn == 0))
         print(turn)
         if turn == 0:
