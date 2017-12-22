@@ -58,30 +58,35 @@ def place_pieces():
                 print(excpt)
                 print('Try Again)')
         print('column: [a-j]')
-        for _ in range(2):
+        for _ in range(3):
             column = input()
             try:
                 column = column.lower()
-                if column.lower() in ['abcdefghij'] and len(column.lower()) == 1:
+                if column.lower() in ['a b c d e f g h i j'] and len(column.lower()) == 1:
                     break
                 else:
                     raise ValueError('Column out of range')
             except Exception as excpt:
                 print(excpt)
                 print('Try Again')
-
+        else:
+            close_connection(sock)
+            quit()
         print('(H)orizontal or (V)ertical: [hv]')
         for _ in range(2):
             orient = input()
             try:
                 orient = orient.lower()
-                if orient.lower() in ['hv'] and len(column.lower()) == 1:
+                if orient.lower() in ['h v'] and len(column.lower()) == 1:
                     break
                 else:
                     raise ValueError('Column out of range')
             except Exception as excpt:
                 print(excpt)
                 print('Try Again')
+        else:
+            close_connection(sock)
+            quit()
 
         if orient == 'h':
             if (ord(column) + ship.length) > 10:
