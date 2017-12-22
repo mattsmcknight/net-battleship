@@ -38,7 +38,10 @@ def receive_ack(sock):
     b = ''
     while True:
         sock.settimeout(5.0)
-        a = sock.recv(1).decode("utf8")
+        try:
+            a = sock.recv(1).decode("utf8")
+        except:
+            a = '\r'
         if a == '\r':
             break
         b = b + str(a)
