@@ -68,7 +68,7 @@ if __name__ == '__main__':
         turn = random.randint(0,1)
         while True:
             send_first_turn(sock, str(turn == 0))
-            if receive_ack(sock) == 'ack':
+            if receive_ack(sock):
                 break
         print(turn)
         if turn == 0:
