@@ -150,6 +150,7 @@ if __name__ == '__main__':
             if order != False:
                 break
         your_turn, result = split_order(order)
+        print('{} {}'.format(type(result), result)
         if result == 'Winner!':
             winner = True
             break
