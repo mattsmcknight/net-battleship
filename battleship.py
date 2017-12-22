@@ -27,7 +27,7 @@ def connect(server, client = 'None'):
         print('Connecting to host...')
         sock = open_client(client)
         print ('Connection Established.')
-
+    return sock2, sock
 
 
 def split_order(b):
