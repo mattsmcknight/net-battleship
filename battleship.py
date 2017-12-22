@@ -34,11 +34,11 @@ def split_order(b):
 
 
 def place_pieces():
-    carrier = Piece('c', 5)
-    battleship1, battleship2 = Piece('b', 4), Piece('b', 4)
-    cruiser1, cruiser2, cruiser3 = Piece('u', 4), Piece('u', 4), Piece('u', 4)
-    submarine1, submarine2, submarine3 = Piece('s', 4), Piece('s', 4), Piece('s', 4)
-    destroyer1, destroyer2 = Piece('d', 4), Piece('d', 4)
+    carrier = Piece('c', 5, 'carrier')
+    battleship1, battleship2 = Piece('b', 4, 'battleship'), Piece('b', 4, 'battleship')
+    cruiser1, cruiser2, cruiser3 = Piece('u', 4, 'cruiser'), Piece('u', 4, 'cruiser'), Piece('u', 4, 'cruiser')
+    submarine1, submarine2, submarine3 = Piece('s', 4, 'submarine'), Piece('s', 4, 'submarine'), Piece('s', 4, 'submarine')
+    destroyer1, destroyer2 = Piece('d', 4, 'destroyer'), Piece('d', 4, 'destroyer')
     ships = [carrier, battleship1, battleship2, cruiser1, cruiser2, cruiser3, submarine1, submarine2, submarine3,
              destroyer1, destroyer2]
     for ship in ships:

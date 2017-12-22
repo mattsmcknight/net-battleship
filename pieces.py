@@ -1,9 +1,10 @@
 class Piece:
-    def __init__(self, piecetype, length):
+    def __init__(self, piecetype, length, name):
         self.piecetype = piecetype
         self.length = length
         self.lives = length
         self.location = []
+        self.name = name
 
     def place_horizontal(self, board,  row, column):
         for x in range(self.length):
@@ -35,3 +36,9 @@ class Piece:
 
     def __radd__(self, other):
         return self + other
+
+    def __repr__(self):
+        return self.name
+
+    def __str__(self):
+        return self.name
