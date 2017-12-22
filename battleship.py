@@ -37,7 +37,7 @@ def split_order(b):
     if len(b) == 1:
         return False
     b[2] = b[2] == 'True'
-    return (int(b[0]), b[1]), b[2]
+    return (int(b[0]), b[1]), str(b[2])
 
 
 def take_order(opponent_board, player_board, sock):
