@@ -106,7 +106,7 @@ if __name__ == '__main__':
                 break
         sock.settimeout(100000)
         if turn == 0:
-            time.sleep(1)
+            time.sleep(5)
             print('waiting for other player...')
             order = receive_order(sock)
             your_turn, result = split_order(order)
