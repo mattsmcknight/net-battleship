@@ -70,7 +70,7 @@ if __name__ == '__main__':
             send_first_turn(sock, str(turn == 0))
             if receive_ack(sock):
                 break
-        print(turn)
+        sock.settimeout(0)
         if turn == 0:
             receive_order(sock)
 
@@ -78,7 +78,6 @@ if __name__ == '__main__':
         turn = receive_first_turn(sock)
         time.sleep(5)
         send_ack(sock)
-        print(turn)
         if not turn:
             receive_order(sock)
 
