@@ -2,6 +2,8 @@ class Piece:
     def __init__(self, piecetype, length):
         self.piecetype = piecetype
         self.length = length
+        self.lives = length
+        self.location = []
 
     def place_horizontal(self, board,  row, column):
         for x in range(self.length):
@@ -17,4 +19,19 @@ class Piece:
                 return False
         for x in range(self.length):
             board.fillboard(row + x, column, self.piecetype)
+            self.location.append((row + x, column))
         return True
+
+    def remove_life(self, row, column):
+        if (row, column) in self.location:
+            self.lives -= 1
+        return self.lives
+
+    def __repr__(self):
+        return int(self.lives)
+
+    def __add__(self, other):
+        return int(self.lives) + other
+
+    def __radd__(self, other):
+        return self + other

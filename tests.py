@@ -5,8 +5,8 @@ class BattleShipTestCase(unittest.TestCase):
     def setUp(self):
         self.player_board, self.opponent_board = initialize()
 
-    def testplayer_boards(self):
-        testboard ="""    a  b  c  d  e  f  g  h  i  j 
+    def test_player_boards(self):
+        testboard = """    a  b  c  d  e  f  g  h  i  j 
 1   ~  ~  ~  ~  ~  ~  ~  ~  ~  ~ 
 2   ~  ~  ~  ~  ~  ~  ~  ~  ~  ~ 
 3   ~  ~  ~  ~  ~  ~  ~  ~  ~  ~ 
@@ -19,8 +19,7 @@ class BattleShipTestCase(unittest.TestCase):
 10  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~ """
         self.assertEqual('{}'.format(self.player_board), testboard, 'Does not match')
 
-
-    def testopponent_boards(self):
+    def test_opponent_boards(self):
         testboard = """    a  b  c  d  e  f  g  h  i  j 
 1   ?  ?  ?  ?  ?  ?  ?  ?  ?  ? 
 2   ?  ?  ?  ?  ?  ?  ?  ?  ?  ? 
@@ -35,13 +34,12 @@ class BattleShipTestCase(unittest.TestCase):
         self.assertEqual('{}'.format(self.opponent_board), testboard, 'Does not match')
 
 
-    def testpiece(self):
+    def test_piece(self):
         carrier = Piece('c', 5)
         c_test_true = carrier.place_vertical(self.player_board, 1, 'c')
         c_test_false = carrier.place_horizontal(self.player_board, 2, 'a')
         self.assertEqual(c_test_true, True, 'Carrier not placed')
         self.assertEqual(c_test_false, False, 'Carrier placed overlapped')
-        testme = self.player_board.__str__()
         testboard = """    a  b  c  d  e  f  g  h  i  j 
 1   ~  ~  c  ~  ~  ~  ~  ~  ~  ~ 
 2   ~  ~  c  ~  ~  ~  ~  ~  ~  ~ 
@@ -61,6 +59,7 @@ class BattleShipTestCase(unittest.TestCase):
         carrier.place_vertical(self.player_board, 1, 'c')
         self.assertEqual(self.player_board.hit(3, 'c'), True, 'Hit not detected')
         self.assertEqual(self.player_board.hit(3, 'd'), False, 'Hit detected in error')
+        self.assertEqual(carrier.remove_life(3, 'c'), 4, 'Wrong Lives Left')
         testboard = """    a  b  c  d  e  f  g  h  i  j 
 1   ~  ~  c  ~  ~  ~  ~  ~  ~  ~ 
 2   ~  ~  c  ~  ~  ~  ~  ~  ~  ~ 

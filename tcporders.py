@@ -42,10 +42,11 @@ def recieve_order(sock):
         if a == '\r':
             break
         b = b + str(a)
-    b = b.split(',')
-    print(b)
-    b[2] = b[2] == 'True'
-    return (int(b[0]), b[1]), b[2]
+    return b
+
+def send_winner(sock):
+    message = 'Winner!\r'
+    sock.send(bytes(message, 'utf8'))
 
 def close_connection(sock):
     sock.close()
