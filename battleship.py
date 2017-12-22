@@ -71,14 +71,17 @@ if __name__ == '__main__':
             if receive_ack(sock):
                 break
         sock.settimeout(100000)
+        print(turn)
         if turn == 0:
             time.sleep(1)
+            print('waiting for order')
             receive_order(sock)
 
     if server == 'client':
         turn = receive_first_turn(sock)
         time.sleep(5)
         send_ack(sock)
+        print(turn)
         if not turn:
             receive_order(sock)
 
