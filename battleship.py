@@ -167,6 +167,7 @@ if __name__ == '__main__':
             break
 
     # Sync boards by hitting all squares
+    cls()
     print(opponent_board)
     print(player_board)
     if winner:
