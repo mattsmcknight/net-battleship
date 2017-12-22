@@ -63,7 +63,6 @@ if __name__ == '__main__':
     sock2, sock = connect(server, client)
     ships = init_pieces()
     place_pieces(player_board, ships)
-    sock2, sock = connect(server, client)
 
     if server == 'host':
         turn = random.randint(0,1)
