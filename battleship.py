@@ -108,7 +108,8 @@ if __name__ == '__main__':
         if turn == 0:
             time.sleep(1)
             print('waiting for other player...')
-            your_turn, result = split_order(receive_order(sock))
+            order = receive_order(sock)
+            your_turn, result = split_order(order)
             my_result = player_board.hit(*your_turn)
             for ship in ships:
                 ship.remove_life(*your_turn)
