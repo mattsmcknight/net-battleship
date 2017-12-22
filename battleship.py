@@ -73,7 +73,7 @@ if __name__ == '__main__':
             receive_order(sock)
 
     if server == 'client':
-        turn == receive_first_turn(sock)
+        turn = receive_first_turn(sock)
         print(turn)
         if not turn:
             receive_order(sock)
