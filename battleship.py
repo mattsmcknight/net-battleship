@@ -150,12 +150,8 @@ if __name__ == '__main__':
     while True:
         row, column = take_order(opponent_board, player_board, sock)
         print('too far?')
-        time.sleep(2)
         send_order(sock, row, column, my_result)
-        while True:
-            order = receive_order(sock)
-            if order != False:
-                break
+        order = receive_order(sock)
         your_turn, result = split_order(order)
         print('{} {}'.format(type(result), result))
         if result == 'Winner!':
@@ -167,7 +163,6 @@ if __name__ == '__main__':
             ship.remove_life(*your_turn)
         print(sum(ships))
         if sum(ships) == 0:
-            time.sleep(2)
             send_winner(sock)
             winner = False
             break
