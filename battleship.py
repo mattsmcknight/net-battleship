@@ -8,10 +8,14 @@ def cls():
     os.system('cls' if os.name=='nt' else 'clear')
 
 
-def initialize(server, client = None):
+def initialize():
     player = Board()
     player.playerboard()
     opponent = Board()
+    return player, opponent
+
+
+def connect(server, client = none):
     if server == 'host':
         sock2 = open_host()
         print('Waiting for other Player...')
@@ -24,7 +28,6 @@ def initialize(server, client = None):
         sock = open_client(client)
         print ('Connection Established.')
 
-    return player, opponent, sock2, sock
 
 
 def split_order(b):
@@ -46,32 +49,21 @@ if __name__ == '__main__':
     except:
         client = None
 
-    player_board, opponent_board, sock2, sock = initialize(server, client)
-    ships = place_pieces(player_board, sock)
+    player_board, opponent_board, sock2, sock = initialize()
+    ships = place_pieces(player_board)
+    connect(server, client)
 
     if server == 'host':
         turn = random.randint(0,1)
-        while True:
-            print('send')
-            send_first_turn(sock, str(turn == 0))
-            print('wait')
-            if receive_ack(sock):
-                break
+        send_first_turn(sock, str(turn == 0))
         if turn == 0:
             receive_order(sock)
-            print('your turn')
-
 
     if server == client:
         turn == receive_first_turn(sock)
-        print('received')
         time.sleep(2)
-        print('send ack')
-        send_ack(sock)
         if not turn:
-            print('waiting for order')
             receive_order
-            print('your turn')
 
     time.sleep(10)
     # Turn Loop
