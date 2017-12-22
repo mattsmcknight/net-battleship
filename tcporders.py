@@ -20,7 +20,7 @@ def open_client(host = 'localhost'):
     return sock
 
 def send_first_turn(sock, myturn):
-    sock.timeout(5.0)
+    sock.timeout(5)
     try:
         sock.send(bytes('{}\r'.format(myturn), 'utf8'))
     except:
@@ -41,7 +41,7 @@ def send_ack(sock):
 def receive_ack(sock):
     b = ''
     while True:
-        sock.settimeout(5.0)
+        sock.settimeout(5)
         try:
             a = sock.recv(1).decode("utf8")
         except:
