@@ -133,6 +133,7 @@ if __name__ == '__main__':
 
     while True:
         row, column = take_order(opponent_board, player_board, sock)
+        print('too far?')
         time.sleep(2)
         send_order(sock, row, column, my_result)
         your_turn, result = split_order(receive_order(sock))
