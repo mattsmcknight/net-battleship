@@ -45,6 +45,7 @@ class Board:
 
     def check_occupied(self, row, column):
         row = row - 1
+        print('{}, {}'.format(row, column))
         if self.board[row][column] != '~':
             return True
         return False
