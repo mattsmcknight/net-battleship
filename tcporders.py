@@ -20,7 +20,7 @@ def open_client(host = 'localhost'):
     return sock
 
 def send_first_turn(sock, myturn):
-    sock.timeout(5)
+    sock.settimeout(5)
     try:
         sock.send(bytes('{}\r'.format(myturn), 'utf8'))
     except:
