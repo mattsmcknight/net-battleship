@@ -30,7 +30,8 @@ class Board:
         return(lines)
 
     def fillboard(self, row, column, value):
-        self.board[row - 1][column] = value
+        row = row - 1
+        self.board[row][column] = value
         return self.board
 
 
@@ -45,17 +46,19 @@ class Board:
         return False
 
     def hit(self, row, column):
-        if self.board[row - 1][column] == '~':
+        row = row - 1
+        if self.board[row][column] == '~':
             return False
         else:
-            self.board[row - 1][column] = 'X'
+            self.board[row][column] = 'X'
             return True
         return False
 
     def opponenthit(self, row, column, success):
+        row = row - 1
         if success:
-            self.board[row - 1][column] = 'X'
+            self.board[row][column] = 'X'
             return True
         else:
-            self.board[row - 1][column] = '~'
+            self.board[row][column] = '~'
             return False
