@@ -60,20 +60,25 @@ if __name__ == '__main__':
         client = None
 
     player_board, opponent_board, = initialize()
+    sock2, sock = connect(server, client)
     ships = init_pieces()
     place_pieces(player_board, ships)
     sock2, sock = connect(server, client)
 
     if server == 'host':
         turn = random.randint(0,1)
-        time.sleep(5)
-        send_first_turn(sock, str(turn == 0))
+        while True:
+            send_first_turn(sock, str(turn == 0))
+            if receive_ack(sock):
+                break
         print(turn)
         if turn == 0:
             receive_order(sock)
 
     if server == 'client':
         turn = receive_first_turn(sock)
+        time.sleep(2)
+        send_ack(sock)
         print(turn)
         if not turn:
             receive_order(sock)
