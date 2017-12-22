@@ -20,6 +20,7 @@ def open_client(host = 'localhost'):
     return sock
 
 def send_first_turn(sock, myturn):
+    print('send first turn')
     #sock.settimeout(5)
     try:
         sock.send(bytes('{}\r'.format(myturn), 'utf8'))
@@ -33,9 +34,11 @@ def receive_first_turn(sock):
         if a == '\r':
             break
         b = b + str(a)
+        print b
     return b == 'True'
 
 def send_ack(sock):
+    print('sending ack')
     sock.send(bytes('ack\r', 'utf8'))
 
 def receive_ack(sock):
@@ -49,6 +52,7 @@ def receive_ack(sock):
         if a == '\r':
             break
         b = b + str(a)
+        print(b)
     return b == 'ack'
 
 
@@ -68,8 +72,6 @@ def receive_order(sock):
     return b
 
 def send_winner(sock):
+    print('sending winner')
     message = '1,a,Winner!\r'
     sock.send(bytes(message, 'utf8'))
-
-def close_connection(sock):
-    sock.close()
