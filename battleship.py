@@ -1,4 +1,4 @@
-import sys, time, os
+import sys, time, os, random
 
 from boards import Board
 from places import place_pieces
@@ -33,6 +33,12 @@ def split_order(b):
     return (b[0], b[1]), b[2]
 
 
+def take_order(opponent_board, player_board):
+    print(opponent_board)
+    print(player_board)
+
+
+
 if __name__ == '__main__':
     server = sys.argv[1]
     try:
@@ -40,19 +46,26 @@ if __name__ == '__main__':
     except:
         client = None
 
-    player_board, opponent_board = Board(), Board()
-    player_board.playerboard()
-
-    # player_board, opponent_board, sock2, sock = initialize(server, client)
-
+    player_board, opponent_board, sock2, sock = initialize(server, client)
     ships = place_pieces(player_board)
 
-    # Check host or client
-    # If host, Roll for first Turn If client, wait for winner
+    if server == 'host':
+        turn = random.randint(0,1)
+        while true:
+            send_first_turn(sock, turn == 0)
+            if receive_ack(sock):
+                break
+        if turn == 0:
+            receive_order(sock)
 
-    # Winner takes the first turn outside of the Turn Loop
 
-    # Turn Loop starts with loser.
+    if server == client:
+        turn == receive_first_turn(sock)
+        send_ack(sock)
+        if not turn:
+            receive_order
+
+    # Turn Loop
 
     # Win condition tests if all pieces in piece list add to 0
     # Win condition tests if received 'Winner!'

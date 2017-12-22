@@ -31,6 +31,20 @@ def receive_first_turn(sock):
         b = b + str(a)
     return b == 'True'
 
+def send_ack(sock):
+    sock.send(bytes('ack\r'), 'utf8')
+
+def receive_ack(sock)
+    b = ''
+    while True:
+        sock.settimeout(5.0)
+        a = sock.recv(1).decode("utf8")
+        if a == '\r':
+            break
+        b = b + str(a)
+    return b == 'ack'
+
+
 def send_order(sock, row, column, success = 'First_Turn'):
     message = '{},{},{}\r'.format(row, column, str(success))
     sock.send(bytes(message, 'utf8'))
