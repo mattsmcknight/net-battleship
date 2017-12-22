@@ -78,10 +78,9 @@ def take_order(opponent_board, player_board, sock):
             quit()
         if opponent_board[row][column] == 'X':
             print('Already Placed this move, Try Again')
-        else:
-            sock.close()
-            quit()
     return (row, column)
+
+
 def init_pieces():
     carrier = Piece('c', 5, 'carrier')
     battleship1, battleship2 = Piece('b', 4, 'battleship'), Piece('b', 4, 'battleship')
