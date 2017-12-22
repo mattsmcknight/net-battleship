@@ -12,7 +12,7 @@ class Piece:
                 return False
         for x in range(self.length):
             board.fillboard(row, chr(ord(column) + x), self.piecetype)
-            self.location.append(row, chr(ord(column) + x))
+            self.location.append((row, chr(ord(column) + x)))
         return True
 
     def place_vertical(self, board,  row, column):
