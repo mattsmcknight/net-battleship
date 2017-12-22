@@ -123,7 +123,8 @@ if __name__ == '__main__':
         if not turn:
             print('waiting for other player...')
             sock.settimeout(100000)
-            your_turn, result = split_order(receive_order(sock))
+            order = receive_order(sock)
+            your_turn, result = split_order(order)
             my_result = player_board.hit(*your_turn)
             for ship in ships:
                 ship.remove_life(*your_turn)
@@ -147,14 +148,6 @@ if __name__ == '__main__':
             send_winner(sock)
             winner = False
             break
-
-
-
-    # Win condition tests if all pieces in piece list add to 0
-    # Win condition tests if received 'Winner!'
-    # Win condition sets winner = True or False
-
-    # Turn Loop broken by win conditions.
 
     # Sync boards by hitting all squares
 
