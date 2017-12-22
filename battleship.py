@@ -73,7 +73,7 @@ def take_order(opponent_board, player_board, sock):
             except Exception as excpt:
                 print(excpt)
                 print('Try Again')
-        if opponent_board[row][column] == 'x'
+        if opponent_board[row][column] == 'X':
             print('Already Placed this move, Try Again')
         else:
             sock.close()
