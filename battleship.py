@@ -34,7 +34,7 @@ def connect(server, client = 'None'):
 def split_order(b):
     b = b.split(',')
     b[2] = b[2] == 'True'
-    return (b[0], b[1]), b[2]
+    return (int(b[0]), b[1]), b[2]
 
 
 def take_order(opponent_board, player_board, sock):
