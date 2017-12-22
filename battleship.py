@@ -72,6 +72,7 @@ if __name__ == '__main__':
                 break
         sock.settimeout(0)
         if turn == 0:
+            time.sleep(1)
             receive_order(sock)
 
     if server == 'client':
