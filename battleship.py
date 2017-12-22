@@ -43,7 +43,7 @@ def split_order(b):
 
 
 def take_order(opponent_board, player_board, sock):
-    # cls()
+    cls()
     print(opponent_board)
     print(player_board)
     print('Your move.')
@@ -151,11 +151,9 @@ if __name__ == '__main__':
 
     while True:
         row, column = take_order(opponent_board, player_board, sock)
-        print('too far?')
         send_order(sock, row, column, my_result)
         order = receive_order(sock)
         your_turn, result = split_order(order)
-        print('{} {}'.format(type(result), result))
         if result == 'Winner!':
             winner = True
             break
@@ -163,16 +161,12 @@ if __name__ == '__main__':
         opponent_board.opponenthit(row, column, result == 'True')
         for ship in ships:
             ship.remove_life(*your_turn)
-        print(sum(ships))
         if sum(ships) == 0:
             send_winner(sock)
             winner = False
             break
 
     # Sync boards by hitting all squares
-    time.sleep(30)
-    close_connection(sock)
-
     print(opponent_board)
     print(player_board)
     if winner:
@@ -180,6 +174,8 @@ if __name__ == '__main__':
     else:
         print('You have Lost!')
 
+    time.sleep(30)
+    sock.close()
 
 
 
