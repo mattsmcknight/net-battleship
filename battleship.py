@@ -34,7 +34,7 @@ def connect(server, client = 'None'):
 def split_order(b):
     print(b)
     b = b.split(',')
-    if len(b) = 1:
+    if len(b) == 1:
         return False
     b[2] = b[2] == 'True'
     return (int(b[0]), b[1]), b[2]
