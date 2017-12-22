@@ -64,6 +64,7 @@ if __name__ == '__main__':
         send_ack(sock)
         if not turn:
             receive_order
+        recieve_ack(sock)
 
     # Turn Loop
 
