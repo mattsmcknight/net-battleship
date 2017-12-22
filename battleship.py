@@ -52,7 +52,9 @@ if __name__ == '__main__':
     if server == 'host':
         turn = random.randint(0,1)
         while True:
+            print('send')
             send_first_turn(sock, str(turn == 0))
+            print('wait')
             if receive_ack(sock):
                 break
         if turn == 0:
@@ -62,9 +64,12 @@ if __name__ == '__main__':
 
     if server == client:
         turn == receive_first_turn(sock)
+        print('received')
         time.sleep(2)
+        print('send ack')
         send_ack(sock)
         if not turn:
+            print('waiting for order')
             receive_order
             print('your turn')
 
