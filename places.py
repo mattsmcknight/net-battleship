@@ -1,4 +1,3 @@
-from pieces import Piece
 import os
 
 def cls():

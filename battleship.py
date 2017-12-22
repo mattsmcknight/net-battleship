@@ -1,6 +1,7 @@
 import sys, time, os, random
 
 from boards import Board
+from pieces import Piece
 from places import place_pieces
 from tcporders import *
 
