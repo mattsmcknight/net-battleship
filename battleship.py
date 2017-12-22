@@ -81,7 +81,7 @@ if __name__ == '__main__':
         if not turn:
             receive_order(sock)
 
-
+    print('it\'s my turn')
     time.sleep(10)
     # Turn Loop
 
