@@ -76,11 +76,12 @@ if __name__ == '__main__':
 
     if server == 'client':
         turn = receive_first_turn(sock)
-        time.sleep(2)
+        time.sleep(5)
         send_ack(sock)
         print(turn)
         if not turn:
             receive_order(sock)
+
 
     time.sleep(10)
     # Turn Loop
