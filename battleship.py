@@ -103,10 +103,10 @@ if __name__ == '__main__':
         while True:
             send_first_turn(sock, str(turn == 0))
             if receive_ack(sock):
+                time.sleep(10)
                 break
         sock.settimeout(100000)
         if turn == 0:
-            time.sleep(5)
             print('waiting for other player...')
             order = receive_order(sock)
             your_turn, result = split_order(order)
@@ -120,6 +120,7 @@ if __name__ == '__main__':
         turn = receive_first_turn(sock)
         time.sleep(5)
         send_ack(sock)
+        time.sleep(5)
         if not turn:
             print('waiting for other player...')
             sock.settimeout(100000)
