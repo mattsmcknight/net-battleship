@@ -155,7 +155,7 @@ if __name__ == '__main__':
             winner = True
             break
         my_result = player_board.hit(*your_turn)
-        opponent_board.opponenthit(row, column, result)
+        opponent_board.opponenthit(row, column, result == 'True')
         for ship in ships:
             ship.remove_life(*your_turn)
         print(sum(ships))
