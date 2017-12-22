@@ -34,7 +34,7 @@ def receive_first_turn(sock):
 def send_ack(sock):
     sock.send(bytes('ack\r'), 'utf8')
 
-def receive_ack(sock)
+def receive_ack(sock):
     b = ''
     while True:
         sock.settimeout(5.0)
