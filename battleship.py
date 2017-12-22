@@ -129,7 +129,7 @@ if __name__ == '__main__':
         send_order(sock, *attack, my_result)
         your_turn, result = split_order(receive_order(sock))
         if result == 'Winner!':
-            winner = True:
+            winner = True
             break
         my_result = player_board.hit(*your_turn)
         opponent_board.hit(*attack, result)
