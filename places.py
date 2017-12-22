@@ -3,7 +3,7 @@ import os
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
 
-def place_pieces(player_board, ships):
+def place_pieces(player_board, ships, sock):
     for ship in ships:
         cls()
         print(player_board)

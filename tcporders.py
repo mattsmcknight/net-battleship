@@ -66,7 +66,7 @@ def receive_order(sock):
     return b
 
 def send_winner(sock):
-    message = 'Winner!\r'
+    message = '1,a,Winner!\r'
     sock.send(bytes(message, 'utf8'))
 
 def close_connection(sock):

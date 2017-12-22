@@ -37,10 +37,42 @@ def split_order(b):
     return (b[0], b[1]), b[2]
 
 
-def take_order(opponent_board, player_board):
+def take_order(opponent_board, player_board, sock):
     print(opponent_board)
     print(player_board)
-
+    print('Your move.')
+    for _ in range(3):
+        print('row: [1-10]')
+        for _ in range(3):
+            row = input()
+            try:
+                row = int(row)
+                if row > 0 and row < 11:
+                    break
+                else:
+                    raise ValueError('Number out of range')
+            except Exception as excpt:
+                print(excpt)
+                print('Try Again)')
+        else:
+            sock.close()
+            quit()
+        print('column: [a-j]')
+        for _ in range(3):
+            column = input()
+            try:
+                column = column.lower()
+                if column in 'a b c d e f g h i j' and len(column) == 1:
+                    break
+                else:
+                    raise ValueError('Column out of range')
+            except Exception as excpt:
+                print(excpt)
+                print('Try Again')
+        else:
+            sock.close()
+            quit()
+        return (row, column)
 def init_pieces():
     carrier = Piece('c', 5, 'carrier')
     battleship1, battleship2 = Piece('b', 4, 'battleship'), Piece('b', 4, 'battleship')
@@ -62,7 +94,7 @@ if __name__ == '__main__':
     player_board, opponent_board, = initialize()
     sock2, sock = connect(server, client)
     ships = init_pieces()
-    place_pieces(player_board, ships)
+    place_pieces(player_board, ships, sock)
 
     if server == 'host':
         turn = random.randint(0,1)
@@ -74,7 +106,11 @@ if __name__ == '__main__':
         if turn == 0:
             time.sleep(1)
             print('waiting for other player...')
-            receive_order(sock)
+            your_turn, result = split_order(receive_order(sock))
+            my_result = player_board.hit(*your_turn)
+            for ship in ships:
+                ship.remove_life(*your_turn)
+
 
     if server == 'client':
         turn = receive_first_turn(sock)
@@ -82,12 +118,30 @@ if __name__ == '__main__':
         send_ack(sock)
         if not turn:
             print('waiting for other player...')
-            receive_order(sock)
+            your_turn, result = split_order(receive_order(sock))
+            my_result = player_board.hit(*your_turn)
+            for ship in ships:
+                ship.remove_life(*your_turn)
+
+    while True:
+        attack = take_order(sock)
+        time.sleep(2)
+        send_order(sock, *attack, my_result)
+        your_turn, result = split_order(receive_order(sock))
+        if result == 'Winner!'
+            winner = True:
+            break
+        my_result = player_board.hit(*your_turn)
+        opponent_board.hit(*attack, result)
+        for ship in ships:
+            ship.remove_life(*your_turn)
+        if sum(ships) = 0:
+            time.sleep(2)
+            send_winner(sock)
+            winner = False
+            break
 
 
-    print('it\'s my turn')
-    time.sleep(10)
-    # Turn Loop
 
     # Win condition tests if all pieces in piece list add to 0
     # Win condition tests if received 'Winner!'
