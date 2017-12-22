@@ -40,6 +40,15 @@ def take_order(opponent_board, player_board):
     print(opponent_board)
     print(player_board)
 
+def init_pieces()
+    carrier = Piece('c', 5, 'carrier')
+    battleship1, battleship2 = Piece('b', 4, 'battleship'), Piece('b', 4, 'battleship')
+    cruiser1, cruiser2, cruiser3 = Piece('u', 3, 'cruiser'), Piece('u', 3, 'cruiser'), Piece('u', 3, 'cruiser')
+    submarine1, submarine2, submarine3 = Piece('s', 3, 'submarine'), Piece('s', 3, 'submarine'), Piece('s', 3, 'submarine')
+    destroyer1, destroyer2 = Piece('d', 2, 'destroyer'), Piece('d', 2, 'destroyer')
+    ships = [carrier]#battleship1, battleship2, cruiser1, cruiser2, cruiser3, submarine1, submarine2, submarine3,
+             destroyer1, destroyer2]
+    return ships
 
 
 if __name__ == '__main__':
@@ -50,7 +59,8 @@ if __name__ == '__main__':
         client = None
 
     player_board, opponent_board, = initialize()
-    ships = place_pieces(player_board)
+    ships = init_pieces()
+    place_pieces(player_board, ships)
     sock2, sock = connect(server, client)
 
     if server == 'host':
