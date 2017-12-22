@@ -64,8 +64,8 @@ if __name__ == '__main__':
         send_ack(sock)
         if not turn:
             receive_order
-        recieve_ack(sock)
 
+    time.sleep(15)
     # Turn Loop
 
     # Win condition tests if all pieces in piece list add to 0
