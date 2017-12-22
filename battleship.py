@@ -173,7 +173,7 @@ if __name__ == '__main__':
             break
 
     # Sync boards by hitting all squares
-
+    time.wait(30)
     close_connection(sock)
 
     print(opponent_board)
