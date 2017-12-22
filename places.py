@@ -42,7 +42,7 @@ def place_pieces(player_board):
                     print(excpt)
                     print('Try Again')
             else:
-                close_connection(sock)
+                sock.close()
                 quit()
             print('(H)orizontal or (V)ertical: [hv]')
             for _ in range(2):
@@ -57,7 +57,7 @@ def place_pieces(player_board):
                     print(excpt)
                     print('Try Again')
             else:
-                close_connection(sock)
+                sock.close
                 quit()
 
             if orient == 'h':
@@ -77,7 +77,7 @@ def place_pieces(player_board):
                 else:
                     print('Occupied, try again.')
         else:
-            close_connection(sock)
+            sock.close()
             quit()
     cls()
     print(player_board)
