@@ -34,6 +34,8 @@ def connect(server, client = 'None'):
 def split_order(b):
     print(b)
     b = b.split(',')
+    if len(b) = 1:
+        return False
     b[2] = b[2] == 'True'
     return (int(b[0]), b[1]), b[2]
 
@@ -124,7 +126,10 @@ if __name__ == '__main__':
         if not turn:
             print('waiting for other player...')
             sock.settimeout(100000)
-            order = receive_order(sock)
+            while true:
+                order = receive_order(sock)
+                if order != False:
+                    break
             your_turn, result = split_order(order)
             my_result = player_board.hit(*your_turn)
             for ship in ships:
