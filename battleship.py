@@ -125,9 +125,7 @@ if __name__ == '__main__':
 
     if server == 'client':
         turn = receive_first_turn(sock)
-        time.sleep(5)
         send_ack(sock)
-        time.sleep(5)
         if not turn:
             print('waiting for other player...')
             sock.settimeout(100000)
