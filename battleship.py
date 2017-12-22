@@ -102,11 +102,13 @@ if __name__ == '__main__':
 
     if server == 'host':
         turn = random.randint(0,1)
-        while True:
-            send_first_turn(sock, str(turn == 0))
-            if receive_ack(sock):
-                time.sleep(10)
-                break
+        # while True:
+        #     send_first_turn(sock, str(turn == 0))
+        #     if receive_ack(sock):
+        #         time.sleep(10)
+        #         break
+        send_first_turn(sock, str(turn == 0))
+        receive_ack(sock)
         sock.settimeout(100000)
         if turn == 0:
             print('waiting for other player...')
