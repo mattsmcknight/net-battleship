@@ -41,7 +41,7 @@ def split_order(b):
 
 
 def take_order(opponent_board, player_board, sock):
-    cls()
+    # cls()
     print(opponent_board)
     print(player_board)
     print('Your move.')
@@ -159,6 +159,7 @@ if __name__ == '__main__':
         opponent_board.opponenthit(row, column, result)
         for ship in ships:
             ship.remove_life(*your_turn)
+        print(sum(ships))
         if sum(ships) == 0:
             time.sleep(2)
             send_winner(sock)
