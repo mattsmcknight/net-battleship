@@ -4,7 +4,7 @@ import os
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
 
-def place_pieces(player_board):
+def place_pieces(player_board, sock):
     carrier = Piece('c', 5, 'carrier')
     battleship1, battleship2 = Piece('b', 4, 'battleship'), Piece('b', 4, 'battleship')
     cruiser1, cruiser2, cruiser3 = Piece('u', 3, 'cruiser'), Piece('u', 3, 'cruiser'), Piece('u', 3, 'cruiser')
@@ -29,6 +29,9 @@ def place_pieces(player_board):
                 except Exception as excpt:
                     print(excpt)
                     print('Try Again)')
+            else:
+                sock.close()
+                quit()
             print('column: [a-j]')
             for _ in range(3):
                 column = input()
