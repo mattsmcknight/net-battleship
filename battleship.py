@@ -142,7 +142,11 @@ if __name__ == '__main__':
         print('too far?')
         time.sleep(2)
         send_order(sock, row, column, my_result)
-        your_turn, result = split_order(receive_order(sock))
+        while true:
+            order = receive_order(sock)
+            if order != False:
+                break
+        your_turn, result = split_order(order)
         if result == 'Winner!':
             winner = True
             break
