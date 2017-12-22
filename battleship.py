@@ -72,11 +72,11 @@ if __name__ == '__main__':
         if turn == 0:
             receive_order(sock)
 
-    if server == client:
+    if server == 'client':
         turn == receive_first_turn(sock)
         print(turn)
         if not turn:
-            receive_order
+            receive_order(sock)
 
     time.sleep(10)
     # Turn Loop
