@@ -124,15 +124,15 @@ if __name__ == '__main__':
                 ship.remove_life(*your_turn)
 
     while True:
-        attack = take_order(sock)
+        row, column = take_order(sock)
         time.sleep(2)
-        send_order(sock, *attack, my_result)
+        send_order(sock, row, column, my_result)
         your_turn, result = split_order(receive_order(sock))
         if result == 'Winner!':
             winner = True
             break
         my_result = player_board.hit(*your_turn)
-        opponent_board.hit(*attack, result)
+        opponent_board.hit(row, column, result)
         for ship in ships:
             ship.remove_life(*your_turn)
         if sum(ships) == 0:
