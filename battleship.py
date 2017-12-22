@@ -71,19 +71,19 @@ if __name__ == '__main__':
             if receive_ack(sock):
                 break
         sock.settimeout(100000)
-        print(turn)
         if turn == 0:
             time.sleep(1)
-            print('waiting for order')
+            print('waiting for other player...')
             receive_order(sock)
 
     if server == 'client':
         turn = receive_first_turn(sock)
         time.sleep(5)
         send_ack(sock)
-        print(turn)
         if not turn:
+            print('waiting for other player...')
             receive_order(sock)
+
 
     print('it\'s my turn')
     time.sleep(10)
