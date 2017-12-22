@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
     if server == 'host':
         turn = random.randint(0,1)
-        while true:
+        while True:
             send_first_turn(sock, turn == 0)
             if receive_ack(sock):
                 break
