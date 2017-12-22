@@ -90,7 +90,8 @@ def place_pieces(player_board):
                 quit()
 
             if orient == 'h':
-                if (ord(column) + ship.length) > (ord('a') + 9):
+                print('{} {} {}'.format(ord(column), ship.length, ord(column) + ship.length)
+                if (ord(column) + ship.length) > 106:
                     column = chr(ord(column) - (ord(column) + ship.length - 9))
                 if ship.place_horizontal(player_board, row, column):
                     break
