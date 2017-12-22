@@ -99,7 +99,7 @@ def place_pieces(player_board):
 
             if orient == 'v':
                 if (row + ship.length) > 10:
-                    row = row - (row + ship.length - 10)
+                    row = row - (row + ship.length - 10) + 1
                 if ship.place_vertical(player_board, row, column):
                     break
                 else:
