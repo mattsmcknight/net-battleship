@@ -36,7 +36,7 @@ def receive_first_turn(sock):
     return b == 'True'
 
 def send_ack(sock):
-    sock.send(bytes('ack\r'), 'utf8')
+    sock.send(bytes('ack\r', 'utf8'))
 
 def receive_ack(sock):
     b = ''
