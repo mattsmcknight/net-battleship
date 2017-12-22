@@ -38,6 +38,7 @@ def split_order(b):
 
 
 def take_order(opponent_board, player_board, sock):
+    cls()
     print(opponent_board)
     print(player_board)
     print('Your move.')
