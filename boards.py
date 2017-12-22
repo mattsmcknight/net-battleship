@@ -29,6 +29,9 @@ class Board:
                 lines = lines + " {} ".format(column)
         return(lines)
 
+    def __getitem__(self, item):
+        return self.board[item]
+
     def fillboard(self, row, column, value):
         row = row - 1
         self.board[row][column] = value
