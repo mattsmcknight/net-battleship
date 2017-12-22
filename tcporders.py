@@ -34,7 +34,7 @@ def receive_first_turn(sock):
         if a == '\r':
             break
         b = b + str(a)
-        print b
+        print(b)
     return b == 'True'
 
 def send_ack(sock):
