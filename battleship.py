@@ -88,7 +88,7 @@ def place_pieces():
                 column = chr(ord(column) - (ord(column) + ship.length - 10))
             ship.place_horizontal(row, column)
         if orient == 'v':
-            if (row + ship.length) > 10
+            if (row + ship.length) > 10:
                 row = row - (row + ship.length - 10)
             ship.place_vertical(row, column)
     cls()
