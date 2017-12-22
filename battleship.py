@@ -111,7 +111,8 @@ if __name__ == '__main__':
             my_result = player_board.hit(*your_turn)
             for ship in ships:
                 ship.remove_life(*your_turn)
-
+        else:
+            my_result = False
 
     if server == 'client':
         turn = receive_first_turn(sock)
@@ -123,6 +124,8 @@ if __name__ == '__main__':
             my_result = player_board.hit(*your_turn)
             for ship in ships:
                 ship.remove_life(*your_turn)
+        else:
+            my_result = False
 
     while True:
         row, column = take_order(opponent_board, player_board, sock)
