@@ -112,7 +112,10 @@ if __name__ == '__main__':
         sock.settimeout(100000)
         if turn == 0:
             print('waiting for other player...')
-            order = receive_order(sock)
+            while True:
+                order = receive_order(sock)
+                if order != False:
+                    break
             your_turn, result = split_order(order)
             my_result = player_board.hit(*your_turn)
             for ship in ships:
