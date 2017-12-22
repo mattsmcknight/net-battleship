@@ -56,7 +56,7 @@ def send_order(sock, row, column, success = 'First_Turn'):
     message = '{},{},{}\r'.format(row, column, str(success))
     sock.send(bytes(message, 'utf8'))
 
-def recieve_order(sock):
+def receive_order(sock):
     b = ''
     while True:
         a = sock.recv(1).decode("utf8")
