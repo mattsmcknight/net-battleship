@@ -49,9 +49,9 @@ if __name__ == '__main__':
     except:
         client = None
 
-    player_board, opponent_board, sock2, sock = initialize()
+    player_board, opponent_board, = initialize()
     ships = place_pieces(player_board)
-    connect(server, client)
+    sock2, sock = connect(server, client)
 
     if server == 'host':
         turn = random.randint(0,1)
