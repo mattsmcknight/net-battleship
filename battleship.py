@@ -76,8 +76,7 @@ def take_order(opponent_board, player_board, sock):
         else:
             sock.close()
             quit()
-        print(opponent_board[row][column])
-        if opponent_board[row][column] == 'X' or opponent_board[row][column] == '~':
+        if opponent_board[row - 1][column] == 'X' or opponent_board[row][column] == '~':
             print('Already attacked, try again')
         else:
             break
