@@ -64,7 +64,7 @@ def place_pieces():
                 column = column.lower()
                 print(column)
                 print(len(column))
-                if column in ['a b c d e f g h i j'] and len(column) == 1:
+                if column in 'a b c d e f g h i j' and len(column) == 1:
                     break
                 else:
                     raise ValueError('Column out of range')
@@ -79,7 +79,7 @@ def place_pieces():
             orient = input()
             try:
                 orient = orient.lower()
-                if orient in ['h v'] and len(column) == 1:
+                if orient in 'h v' and len(column) == 1:
                     break
                 else:
                     raise ValueError('Column out of range')
