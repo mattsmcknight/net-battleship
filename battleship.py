@@ -15,7 +15,7 @@ def initialize():
     return player, opponent
 
 
-def connect(server, client = none):
+def connect(server, client = None):
     if server == 'host':
         sock2 = open_host()
         print('Waiting for other Player...')
