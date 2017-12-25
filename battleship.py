@@ -92,8 +92,8 @@ def init_pieces():
     cruiser1, cruiser2, cruiser3 = Piece('u', 3, 'cruiser'), Piece('u', 3, 'cruiser'), Piece('u', 3, 'cruiser')
     submarine1, submarine2, submarine3 = Piece('s', 3, 'submarine'), Piece('s', 3, 'submarine'), Piece('s', 3, 'submarine')
     destroyer1, destroyer2 = Piece('d', 2, 'destroyer'), Piece('d', 2, 'destroyer')
-    ships = [carrier]#battleship1, battleship2, cruiser1, cruiser2, cruiser3, submarine1, submarine2, submarine3,
-             # destroyer1, destroyer2]
+    ships = [carrier, battleship1, battleship2, cruiser1, cruiser2, cruiser3, submarine1, submarine2, submarine3,
+             destroyer1, destroyer2]
     return ships
 
 
