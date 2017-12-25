@@ -4,7 +4,7 @@ class Board:
     def __init__(self):
         boardlist = []
         boardtmp = collections.OrderedDict()
-        filled = '?'
+        filled = '~'
         letters = "abcdefghij"
         for row in range(1, 11):
             for column in letters:
@@ -53,6 +53,7 @@ class Board:
     def hit(self, row, column):
         row = row - 1
         if self.board[row][column] == '~':
+            self.board[row][column] = 'O'
             return False
         else:
             self.board[row][column] = 'X'
@@ -65,5 +66,5 @@ class Board:
             self.board[row][column] = 'X'
             return True
         else:
-            self.board[row][column] = '~'
+            self.board[row][column] = 'O'
             return False
