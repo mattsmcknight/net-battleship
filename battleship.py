@@ -78,7 +78,8 @@ def take_order(opponent_board, player_board, sock):
         else:
             sock.close()
             quit()
-        if opponent_board[row - 1][column] == 'X' or opponent_board[row][column] == '~':
+        row = row - 1
+        if opponent_board[row][column] == 'X' or opponent_board[row][column] == '~':
             print('Already attacked, try again')
         else:
             break
@@ -107,6 +108,7 @@ if __name__ == '__main__':
     player_board, opponent_board, = initialize()
     sock2, sock = connect(server, client)
     ships = init_pieces()
+    print ships
     place_pieces(player_board, ships, sock)
 
     if server == 'host':
