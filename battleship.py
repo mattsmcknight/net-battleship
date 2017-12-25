@@ -108,7 +108,6 @@ if __name__ == '__main__':
     player_board, opponent_board, = initialize()
     sock2, sock = connect(server, client)
     ships = init_pieces()
-    print ships
     place_pieces(player_board, ships, sock)
 
     if server == 'host':
@@ -153,6 +152,7 @@ if __name__ == '__main__':
 
     while True:
         row, column = take_order(opponent_board, player_board, sock)
+        print('waiting for other player')
         send_order(sock, row, column, my_result)
         order = receive_order(sock)
         your_turn, result = split_order(order)
